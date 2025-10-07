@@ -2,72 +2,78 @@
 let menuIcon = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.navbar');
 
-menuIcon.onclick =()=>{
-  menuIcon.classList.toggle('fa-xmark');
-  navbar.classList.toggle('active');
+if (menuIcon && navbar) {
+  menuIcon.onclick = () => {
+    menuIcon.classList.toggle('fa-xmark');
+    navbar.classList.toggle('active');
+  };
 }
 
 // Scroll Section active link
-
 let sections = document.querySelectorAll('section');
-let navlinks = document.querySelectorAll('header nav a');
+let navLinks = document.querySelectorAll('header nav a');
 
-window.onscroll = () =>{
-  sections.forEach(sec =>{
+window.onscroll = () => {
+  sections.forEach(sec => {
     let top = window.scrollY;
-    let offset = sec.offsetTop -150;
+    let offset = sec.offsetTop - 150;
     let height = sec.offsetHeight;
     let id = sec.getAttribute('id');
 
-    if(top >= offset && top < offset+height){
-      navlinks.forEach.apply(links=>{
-        links.classList.remove('active');
-        document.querySelector('header nav a[href*=' +id + ']').classList.add('active');
+    if (top >= offset && top < offset + height) {
+      navLinks.forEach(link => {
+        link.classList.remove('active');
       });
-    };
+      let activeLink = document.querySelector('header nav a[href*=' + id + ']');
+      if (activeLink) activeLink.classList.add('active');
+    }
   });
 
-  // sticky navbar
+  // Sticky Navbar
   let header = document.querySelector('header');
-  header.classList.toggle('sticky',window.scrollY >100);
-  
-  
-  // remove toggle icon and navbar
-  menuIcon.classList.remove('fa-xmark');
-  navbar.classList.remove('active');
+  if (header) {
+    header.classList.toggle('sticky', window.scrollY > 100);
+  }
+
+  // Remove toggle icon and navbar when scroll
+  if (menuIcon && navbar) {
+    menuIcon.classList.remove('fa-xmark');
+    navbar.classList.remove('active');
+  }
 };
 
-// scroll reveal
-
+// Scroll Reveal
 ScrollReveal({
-  distance:'80px',
-  duration:2000,
-  display:200,
+  distance: '80px',
+  duration: 2000,
+  delay: 200
 });
 
-ScrollReveal().reveal('.home-content, heading', { origin:'top'});
-ScrollReveal().reveal('.home-img, .services-container, .portfolio-box, .contact form, .title, .progress-bar', { origin:'bottom' });
-ScrollReveal().reveal('.home-content h1, .about-img', { origin:'left'});
-ScrollReveal().reveal('.home-content p, .about-content', { origin:'right' });
+ScrollReveal().reveal('.home-content, .heading', { origin: 'top' });
+ScrollReveal().reveal('.home-img, .services-container, .portfolio-box, .contact form, .title, .progress-bar', { origin: 'bottom' });
+ScrollReveal().reveal('.home-content h1, .about-img', { origin: 'left' });
+ScrollReveal().reveal('.home-content p, .about-content', { origin: 'right' });
 
-// typed js
+// Typed JS
+if (document.querySelector('.multiple-text')) {
+  const typed = new Typed('.multiple-text', {
+    strings: ['DevOps Engineer'],
+    typeSpeed: 70,
+    backSpeed: 70,
+    backDelay: 1000,
+    loop: true
+  });
+}
 
-const typed = new Typed('.multiple-text', {
-  strings:['DevOps Engineer'],
-  typeSpeed:70,
-  backSpeed:70,
-  backDelay:1000,
-  loop:true,
-});
-
-
-
-// script.js
-
-document.getElementById("downloadBtn").addEventListener("click", function () {
-  const link = document.createElement("a");
-  link.href = ""; // Path to your resume file (make sure it's in the same folder)
-  link.download = "Resume.pdf"; // Name for the downloaded file
-  link.click();
-});
-
+// Resume Download Button
+const downloadBtn = document.getElementById("downloadBtn");
+if (downloadBtn) {
+  downloadBtn.addEventListener("click", function () {
+    const link = document.createElement("a");
+    link.href = "NandheeswaranM.pdf"; // Change this path to your actual resume file
+    link.download = "NandheeswaranM.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  });
+}
