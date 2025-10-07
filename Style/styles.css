@@ -743,3 +743,8 @@ span{
   min-height: auto;
   padding-bottom: 4rem;
 }
+
+.portfolio h2 {
+  text-align: center;
+  margin-bottom: 4rem;
+}
