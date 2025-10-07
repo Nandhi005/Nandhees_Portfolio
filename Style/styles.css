@@ -289,7 +289,7 @@ span{
 /* ===== Portfolio (Projects) Section ===== */
 .portfolio {
   background: var(--snd-bf-color);
-  padding: 5rem 9% 2rem;
+  padding: 5rem 9% 0rem;
 }
 
 .portfolio h2 {
@@ -383,11 +383,16 @@ span{
   color: var(--main-color);
 }
 
+.portfolio-container,
+.portfolio h2 {
+  margin-bottom: 0;
+}
 
 
 
 .contact{
   background: var(--bg-color);
+  margin-top: 0rem;
 }
 
 .contact h2{
@@ -732,4 +737,9 @@ span{
   line-height: 10px;
   font-size: 0.9em;
   transition: width 1s ease-in-out;
+}
+
+.portfolio {
+  min-height: auto;
+  padding-bottom: 4rem;
 }
