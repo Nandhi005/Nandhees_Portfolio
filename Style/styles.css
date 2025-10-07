@@ -940,3 +940,20 @@ span{
     font-size: 2rem;
   }
 }
+
+@media (max-width: 768px) {
+  section {
+    min-height: auto;
+    padding: 6rem 5% 2rem;
+  }
+
+  .education,
+  .experience,
+  .skills,
+  .certificate,
+  .portfolio,
+  .contact {
+    min-height: auto;
+    padding-bottom: 3rem;
+  }
+}
