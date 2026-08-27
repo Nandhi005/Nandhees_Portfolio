@@ -70,8 +70,8 @@ const downloadBtn = document.getElementById("downloadBtn");
 if (downloadBtn) {
   downloadBtn.addEventListener("click", function () {
     const link = document.createElement("a");
-    link.href = "NandheeswaranM.pdf"; // Change this path to your actual resume file
-    link.download = "NandheeswaranM.pdf";
+    link.href = "NandheeswaranM_04-08-2026.pdf"; // Change this path to your actual resume file
+    link.download = "NandheeswaranM_04-08-2026.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
