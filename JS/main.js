@@ -3,10 +3,20 @@ let menuIcon = document.querySelector('#menu-icon');
 let navbar = document.querySelector('.navbar');
 
 if (menuIcon && navbar) {
-  menuIcon.onclick = () => {
-    menuIcon.classList.toggle('fa-xmark');
-    navbar.classList.toggle('active');
+  const toggleNavbar = () => {
+    const isOpen = navbar.classList.toggle('active');
+    menuIcon.classList.toggle('fa-xmark', isOpen);
+    menuIcon.setAttribute('aria-expanded', String(isOpen));
+    menuIcon.setAttribute('aria-label', isOpen ? 'Close navigation' : 'Open navigation');
   };
+
+  menuIcon.addEventListener('click', toggleNavbar);
+  menuIcon.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      toggleNavbar();
+    }
+  });
 }
 
 // Scroll Section active link
@@ -38,6 +48,8 @@ window.onscroll = () => {
   // Remove toggle icon and navbar when scroll
   if (menuIcon && navbar) {
     menuIcon.classList.remove('fa-xmark');
+    menuIcon.setAttribute('aria-expanded', 'false');
+    menuIcon.setAttribute('aria-label', 'Open navigation');
     navbar.classList.remove('active');
   }
 };
